@@ -1,0 +1,24 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "af314b1514efc36b6221d06e00e7e248"
+name = "priv-business-change"
+handle = "priv-business-change"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+
+[build]
+dev_store_url = "helge-test.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false
