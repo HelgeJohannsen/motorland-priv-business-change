@@ -6,8 +6,6 @@ import {
   useApplyAttributeChange,
   useAttributeValues,
   Checkbox,
-  TextField,
-  usePurchasingCompany,
   useBillingAddress,
   useBuyerJourneyIntercept,
 } from '@shopify/ui-extensions-react/checkout';
@@ -33,12 +31,10 @@ function buyerJourneyAllow(reason: string, message: string) : InterceptorRequest
 }
 
 function Extension() {
-  const translate = useTranslate();
-  const { extension } = useApi();
   const setAttribut = useApplyAttributeChange()
   const { company } = useBillingAddress() 
   const customerType = useAttributeValues(["customer_type:"])[0]
-  const company2 = company.length
+
   if(useAttributeValues(["customer_type:"])[0] == undefined){
     setAttribut({
       type: 'updateAttribute',
@@ -49,8 +45,16 @@ function Extension() {
 
 
   
-  const [ privatkunde, setPrivatkunde ]  = useState(true);
-
+  const [ privatkunde, setPrivatkunde ]  = useState(Boolean);
+  useEffect(() => {
+    console.log("customerType",customerType )
+    if(customerType == "private"){
+      console.log("init ct",customerType )
+      setPrivatkunde(true)}else{
+        console.log("init ct else",customerType )
+        setPrivatkunde(false)
+      }
+  }, []);
 
   const setBusiness = useCallback(
     (newChecked: boolean) => {setAttribut({
@@ -73,7 +77,7 @@ function Extension() {
 
   useBuyerJourneyIntercept(({ canBlockProgress }) => {
     if( canBlockProgress  ){
-        if ( customerType == "private" && company.length > 0){
+        if ( customerType == "private" && company?.length > 0){
           console.log("block process")
           return buyerJourneyBlock("consors process missmatch", "Sie haben das Feld Firma ausgefüllt, wenn sie ein Geschätskunde sind wählen sie Geschäftskunde, ansonsten leeren sie bitte das Firmenfeld")
       }
