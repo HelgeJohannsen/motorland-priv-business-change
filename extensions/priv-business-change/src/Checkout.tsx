@@ -1,7 +1,5 @@
 import {
   Banner,
-  useApi,
-  useTranslate,
   reactExtension,
   useApplyAttributeChange,
   useAttributeValues,
@@ -47,7 +45,6 @@ function Extension() {
   
   const [ privatkunde, setPrivatkunde ]  = useState(Boolean);
   useEffect(() => {
-    console.log("customerType",customerType )
     if(customerType == "private"){
       console.log("init ct",customerType )
       setPrivatkunde(true)}else{
