@@ -87,7 +87,7 @@ function Extension() {
 
   return (
 
-    <Banner status="info" title="Sind sie ein Geschäftskunde?">
+    <Banner status="info" title="Sind Sie Privat- oder Geschäftskunde?">
           <Checkbox id="private" name="private" checked={privatkunde} onChange={setpriv}>
     Privatkunde
   </Checkbox>
