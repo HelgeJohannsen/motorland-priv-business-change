@@ -94,10 +94,7 @@ function Extension() {
   <Checkbox id="business" name="business" checked={!privatkunde}  onChange={setBusiness}>
     Geschäftskunde
   </Checkbox>
-{/* 
-  {useAttributeValues(["customerType"])[0] != "private" ?     <TextField label="Company" /> : <></>}
-      {useAttributeValues(["customerType"])}
-      {translate('welcome', {target: extension.target})} */}
+
     </Banner>
   );
 }
